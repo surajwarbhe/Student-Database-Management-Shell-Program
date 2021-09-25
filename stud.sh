@@ -2,6 +2,7 @@ i="y"
 while [ $i = "y" ]
 do
 clear
+# MENU
 echo -e  "\t\t\t\t\t|=======================================|"
 echo -e  "\t\t\t\t\t|\tSTUDENT DATA MANAGEMENT\t\t|"
 echo -e  "\t\t\t\t\t|=======================================|"
@@ -14,10 +15,11 @@ echo -e  "\t\t\t\t\t\t6. Search Record "
 echo -e  "\t\t\t\t\t\t7. Exit "
 echo -e  "\t\t\t\t\t|=======================================|"
 echo -e  "\n\t\t\t\t\t\tEnter your Choice :   "
-
 read choice
 
+
 case $choice in
+        # Create Database
         1) echo " Enter Roll number of student : "
            read rn
            echo " Enter Name of student : "
@@ -33,12 +35,14 @@ case $choice in
            ;;
 
 
+        # Display all the database Record
         2) echo " Showing Database of student..."
            echo " Rollno    Name    English    Science    Maths "
            cat stud_db
            ;;
 
 
+        # Insertion of new database record
         3) echo " Enter Roll number of student : "
            read rn
            echo " Enter Name of student : "
@@ -54,6 +58,7 @@ case $choice in
            ;;
 
 
+        # Deletion of Record
         4) echo " Enter Roll Number : "
            read rn
            grep ^$rn stud_db
@@ -63,11 +68,12 @@ case $choice in
            else
                    grep -v $rn stud_db >> tmp
                    cp tmp stud_db
-                   echo " Data deleted successfully !"
+                   echo " Record deleted successfully !"
            fi
            ;;
 
 
+        # Modify the Record
         5) echo " Enter Roll Number : "
            read rn1
            grep ^$rn1 stud_db
@@ -99,6 +105,7 @@ case $choice in
            ;;
 
 
+        # Searching of Record
         6) echo " Enter Roll Number : "
            read rn
            grep ^$rn stud_db
@@ -108,17 +115,29 @@ case $choice in
            fi
            ;;
 
-
-        7) ;;
+        # Exit command
+        # But you need to install figlet software for better thank you look
+        # for Yum : "yum install figlet  -y"
+        7) clear
+           echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+           figlet " T  H  A  N  K  Y  O  U"
+           echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+           exit
+           ;;
 
 
         * ) echo " Enter Right choice !"
         esac
 
+        # Do you want to continue ?
         echo " Do you want to continue ? (y/n)"
         read i
         if [ $i != "y" ]
         then
+                clear
+                echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                figlet " T  H  A  N  K  Y  O  U"
+                echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 exit
         fi
 done
